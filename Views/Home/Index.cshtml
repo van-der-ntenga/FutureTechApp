@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<br>
+<div class="text-center">
+    <h1 class="display-4">Welcome to FutureTech Academy</h1>
+    <p>Your student management portal.</p>
+</div>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="login-container">
+        <div class="login-form">
+            <h2 class="text-center">Login</h2>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <div class="form-group text-center">
+                    
+                    <button type="submit" name="provider" value="Google" class="btn btn-google btn-block">
+                        <img src="~/images/google-icon.png" alt="Google Icon" class="google-icon" />
+                        Login with Google
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

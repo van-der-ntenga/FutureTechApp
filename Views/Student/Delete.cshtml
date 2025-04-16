@@ -1,0 +1,69 @@
+﻿@model FututreTechApp.Models.Student
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h2>Delete Student</h2>
+
+<div class="alert alert-danger">
+    <strong>Warning!</strong> Are you sure you want to delete this student?
+</div>
+
+<div class="form-group half-width">
+    <label>Student ID</label>
+    <p>@Model.id</p>
+</div>
+
+<div class="form-row">
+    <div class="form-group half-width">
+        <label>First Name</label>
+        <p>@Model.FirstName</p>
+    </div>
+    <div class="form-group half-width">
+        <label>Last Name</label>
+        <p>@Model.LastName</p>
+    </div>
+</div>
+
+<div class="form-row">
+    <div class="form-group half-width">
+        <label>Email</label>
+        <p>@Model.Email</p>
+    </div>
+    <div class="form-group half-width">
+        <label>Mobile Number</label>
+        <p>@Model.MobileNumber</p>
+    </div>
+</div>
+
+
+
+<div class="form-row">
+    <div class="form-group half-width">
+        <label>Enrolment Status</label>
+        <p>@Model.EnrolmentStatus</p>
+    </div>
+    <div class="form-group half-width">
+        <label>Current Photo</label>
+        @if (!string.IsNullOrEmpty(ViewBag.CurrentPhotoUrl))
+        {
+            <img src="@ViewBag.CurrentPhotoUrl" alt="Current Photo" style="max-width: 200px; max-height: 200px;" />
+        }
+        else
+        {
+            <p>No photo available.</p>
+        }
+    </div>
+</div>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="id" />
+    <div class="form-actions no-color">
+        <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+}

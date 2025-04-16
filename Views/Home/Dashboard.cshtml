@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<br />
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to FutureTech Academy</h1>
+    <p>Your student management portal.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2>Hi, @User.Identity.Name!</h2>
+    }
+    else
+    {
+        <h2>Hi, Guest!</h2>
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Student</h5>
+                    <a href="@Url.Action("Create", "Student")" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Add Student
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Find Student</h5>
+                    <a href="@Url.Action("Search", "Student")" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Find Student
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Manage Students</h5>
+                    <a href="@Url.Action("Index", "Student")" class="btn btn-primary">
+                        <i class="fas fa-users"></i> Manage Students
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form asp-controller="Account" asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>

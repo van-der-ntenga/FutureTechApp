@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+
+<div class="hamburger-menu">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>

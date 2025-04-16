@@ -1,0 +1,84 @@
+﻿@model FututreTechApp.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2>Edit Student</h2>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+
+    <div class="form-group col-md-6">
+        <label asp-for="id">Student ID</label>
+        <input asp-for="id" class="form-control" readonly />
+    </div>
+
+    <div class="form-row">
+        <div class="form-group half-width">
+            <label asp-for="FirstName">First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group half-width">
+            <label asp-for="LastName">Last Name</label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group half-width">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group half-width">
+            <label asp-for="MobileNumber">Mobile Number</label>
+            <input asp-for="MobileNumber" class="form-control" />
+            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group half-width">
+            <label asp-for="EnrolmentStatus">Enrolment Status</label>
+            <select asp-for="EnrolmentStatus" class="form-control">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <div class="form-group half-width">
+            <label>Current Photo</label>
+            @if (!string.IsNullOrEmpty(ViewBag.CurrentPhotoUrl))
+            {
+                <img src="@ViewBag.CurrentPhotoUrl" alt="Current Photo" style="max-width: 200px; max-height: 200px;" />
+            }
+            else
+            {
+                <p>No photo available.</p>
+            }
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label for="Photo">Upload New Photo</label>
+        <input type="file" name="Photo" class="form-control" />
+        @Html.ValidationMessageFor(m => m.Photo, "", new { @class = "text-danger" })
+    </div>
+    <br/>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <strong>Validation Errors: </strong>
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>
+                        @error.ErrorMessage
+                    </li>
+                }
+            </ul> 
+        </div>
+    }
+    <br/>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
